@@ -7,6 +7,6 @@ if num == 0:
 elif num == 1:
     print("{:d} {:s}{:s}".format(num, "arguments", ":"))
 else:
-    print("{} arguments:".format(num))
+    print("{:d} arguments:".format(num))
 for i in range(num):
-    print("{}: {}".format(i + 1, sys.argv[i + 1]))
+    print("{:d}: {:s}".format(i + 1, sys.argv[i + 1]))
