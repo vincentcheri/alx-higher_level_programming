@@ -1,56 +1,69 @@
 #!/usr/bin/python3
-# 102-square.py
-"""Define a class Square."""
+"""
+Square class definition
+"""
 
 
 class Square:
-    """Represent a square."""
+    """
+    Square class with private instance attribute size
+    """
 
     def __init__(self, size=0):
-        """Initialize a new square.
-        Args:
-            size (int): The size of the new square.
         """
-        self.size = size
+        Args:
+            size: size of the square
+        """
+        if not isinstance(size, int):
+            raise TypeError("size must be an integer")
+        elif size < 0:
+            raise ValueError("size must be >= 0")
+        else:
+            self.__size = size
 
     @property
     def size(self):
-        """Get/set the current size of the square."""
+        """size: size of the square
+        setter validating size is int and >= 0
+        Raise:
+             TypeError and ValueError
+        """
         return (self.__size)
 
     @size.setter
     def size(self, value):
-        if not isinstance(value, int):
+        """size: size of the square
+        setter validating size is int and >= 0
+        Raise:
+             TypeError and ValueError
+        """
+        if type(value) is not int:
             raise TypeError("size must be an integer")
         elif value < 0:
             raise ValueError("size must be >= 0")
-        self.__size = value
+        else:
+            self.__size = value
 
     def area(self):
-        """Return the current area of the square."""
-        return (self.__size * self.__size)
-
-    def __eq__(self, other):
-        """Define the == comparision to a Square."""
-        return self.area() == other.area()
-
-    def __ne__(self, other):
-        """Define the != comparison to a Square."""
-        return self.area() != other.area()
+        """
+        Returns area of the square instance
+        """
+        return (self.size ** 2)
 
     def __lt__(self, other):
-        """Define the < comparison to a Square."""
-        return self.area() < other.area()
+        return (self.area() < other.area())
 
     def __le__(self, other):
-        """Define the <= comparison to a Square."""
-        return self.area() <= other.area()
+        return (self.area() <= other.area())
+
+    def __eq__(self, other):
+        return (self.area() == other.area())
+
+    def __ne__(self, other):
+        return (self.area() != other.area())
 
     def __gt__(self, other):
-        """Define the > comparison to a Square."""
-        return self.area() > other.area()
+        return (self.area() > other.area())
 
     def __ge__(self, other):
-        """Define the >= compmarison to a Square."""
-        return self.area() >= other.area()
-    
+        return (self.area() >= other.area())
