@@ -1,7 +1,11 @@
 #!/usr/bin/python3
-# 0-square.py
-"""Define a class Square."""
+"""
+Square class definition
+"""
+
 
 class Square:
-    """Represent a square."""
+    """
+    Empty square class
+    """
     pass
