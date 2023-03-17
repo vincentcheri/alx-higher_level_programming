@@ -27,8 +27,8 @@ an empty string is printed instead.
 
 ::
 
-    >>> say_my_name("Brennan")
-    My name is Brennan 
+    >>> say_my_name("Vincent")
+    My name is Vincent
 
 Invalid Names
 =============
