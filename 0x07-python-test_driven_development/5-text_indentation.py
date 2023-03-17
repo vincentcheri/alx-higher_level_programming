@@ -1,24 +1,30 @@
 #!/usr/bin/python3
-"""Module containing function to print strings by line
-Contains no directly executable code. Should be imported
-as a module.
-"""
+# 5-text_indentation.py
+
+"""Defines a text-indentation function."""
 
 
 def text_indentation(text):
-    """Function to print text double-spaced, using `.?:` as
-    line separators.
+    """Print text with two new lines after each '.', '?', and ':'.
     Args:
-        text (str): String to print
-    Returns: None.
+        text (string): The text to print.
     Raises:
-        TypeError: If `text` not a string.
+        TypeError: If text is not a string.
     """
-    delims = '.:?'
-    if type(text) is not str:
-        raise TypeError('text must be a string')
-    for c in delims:
-        text = str(c + '\n\n').join(s.strip() for s in text.split(c))
-    print(text, end='')
-    if len(text) > 0 and text[-1] in delims:
-        print('\n')
+    if not isinstance(text, str):
+        raise TypeError("text must be a string")
+
+    c = 0
+    while c < len(text) and text[c] == ' ':
+        c += 1
+
+    while c < len(text):
+        print(text[c], end="")
+        if text[c] == "\n" or text[c] in ".?:":
+            if text[c] in ".?:":
+                print("\n")
+            c += 1
+            while c < len(text) and text[c] == ' ':
+                c += 1
+            continue
+        c += 1
