@@ -1,37 +1,22 @@
 #!/usr/bin/python3
-"""
-This module creates a student class
-with public attributes and replaces
-attributes of student instances using
-Json
-"""
+""" Define a Pascal's Triangle function """
 
 
-class Student:
+def pascal_triangle(n):
     """
-    student class with public instances
+    Represent Pascal's Triangle of size n.
+    Returns a list of lists of integers representing the triangle.
     """
-    def __init__(self, first_name, last_name, age):
-        """
-        instantiation of attr
-        """
-        self.first_name = first_name
-        self.last_name = last_name
-        self.age = age
 
-    def to_json(self, attrs=None):
-        """
-        function returns dict repres
-        of instance
-        """
-        if attrs is None:
-            return (self.__dict__)
-        return ({key: value for key, value in self.__dict__.items()
-                 if key in attrs})
+    if n <= 0:
+        return []
 
-    def reload_from_json(self, json):
-        """
-        function that replaces all attrb of the
-        student instance
-        """
-        self.__dict__.update(json)
+    triangles = [[1]]
+    while len(triangles) != n:
+        tri = triangles[-1]
+        tmp = [1]
+        for i in range(len(tri) - 1):
+            tmp.append(tri[i] + tri[i + 1])
+        tmp.append(1)
+        triangles.append(tmp)
+    return triangles
