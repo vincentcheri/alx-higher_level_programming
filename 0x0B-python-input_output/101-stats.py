@@ -8,7 +8,6 @@ prints the following statistics:
     - Count of read status codes up to that point.
 """
 
-
 def print_stats(size, status_codes):
     """Print accumulated metrics.
     Args:
@@ -56,4 +55,3 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print_stats(size, status_codes)
         raise
-        
