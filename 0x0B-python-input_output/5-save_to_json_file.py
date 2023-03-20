@@ -1,15 +1,20 @@
 #!/usr/bin/python3
+"""
+Save Module
+"""
 import json
-"""
-This file contains a function that
-writes an obj to a text file using
-JSON rep
-"""
 
 
 def save_to_json_file(my_obj, filename):
+    """write an object to a text file
+    args:
+        my_obj: object to manipulate
+    filename:
+        filename: text file
+    return:
+        object
     """
-    function that writes an obj  to a text file
-    """
-    with open(filename, mode="w") as myFile:
-        json.dump(my_obj, myFile)
+
+    with open(filename, "w", encoding="utf-8") as f:
+        written = json.dump(my_obj, f)
+    return written
