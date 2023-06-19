@@ -1,19 +1,17 @@
 #!/usr/bin/python3
+"""Sends a search request for a given string to the Star Wars API.
+
+Usage: ./9-starwars.py <search string>
+  - The search request is sent to the Star Wars API search people endpoint.
+"""
+import sys
 import requests
-from sys import argv
-"""
-script that  takes in a string and sends a search request to the star wars API
-"""
 
 
 if __name__ == "__main__":
-    vals = {"search": argv[1] if len(argv) > 1 else ""}
-    try:
-        req = requests.get('https://swapi.co/api/people/', params=vals).json()
-        count = req.get("count")
-        print("Number of results: {}".format(count))
-        if count > 0:
-            for results in req.get("results"):
-                print(results["name"])
-    except ValueError:
-        print("Not a valid JSON")
+    url = "https://swapi.co/api/people"
+    params = {"search": sys.argv[1]}
+    results = requests.get(url, params=params).json()
+
+    print("Number of results: {}".format(results.get("count")))
+    [print(r.get("name")) for r in results.get("results")]
