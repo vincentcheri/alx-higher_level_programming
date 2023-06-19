@@ -1,18 +1,20 @@
 #!/usr/bin/python3
+"""Sends a request to a given URL and displays the response body.
+
+Usage: ./3-error_code.py <URL>
+  - Handles HTTP errors.
+"""
+import sys
+import urllib.error
 import urllib.request
-import urllib.parse
-from urllib.error import URLError, HTTPError
-from sys import argv
-"""
-script that takes in url and sends a request to url
-displays body of response
-"""
 
 
 if __name__ == "__main__":
-    rep = urllib.request.Request(argv[1])
+    url = sys.argv[1]
+
+    request = urllib.request.Request(url)
     try:
-        with urllib.request.urlopen(rep) as reply:
-            print(reply.read().decode(encoding="utf-8"))
-    except URLError as err:
-        print("Error code: {}".format(err.code))
+        with urllib.request.urlopen(request) as response:
+            print(response.read().decode("ascii"))
+    except urllib.error.HTTPError as e:
+        print("Error code: {}".format(e.code))
