@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+
+"""This script prints the last number of an integer"""
+
 import random
 number = random.randint(-10000, 10000)
 digit = abs(number) % 10
