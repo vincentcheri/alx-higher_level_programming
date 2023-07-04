@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Print integers in double form"""
 for number in range(0, 100):
     if number == 99:
         print("{}".format(number))
